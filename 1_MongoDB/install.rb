@@ -41,4 +41,22 @@
 #
 # ensure that MongoDB will start following a system reboot by issuing the following command:
 #
-# sudo chkconfig mongod on#
+#
+#sudo chkconfig mongod on#
+
+yum_repository 'mongodb' do
+	description "mongodb"
+	baseurl "http://downloads-distro.mongodb.org/repo/redhat/os/x86_64"
+	gpgcheck false
+end
+
+package 'mongodb-org'
+
+service 'mongod' do
+	action :start
+end
+
+service 'mongod' do
+	action :enable
+end
+
